@@ -35,5 +35,58 @@
   <input type="checkbox" name="swin">수영
   <input type="checkbox" name="travel">여행
 
+  <!-- 
+    폼
+    4. 형식
+    <form action="서버경로(url)" method="요청메소드(get/post)">
+
+    </form>
+
+   -->
+   <!-- 
+    버튼
+    1. 인라인 요소
+    2. 종류
+      1) 서브밋  
+        (1) <input type="submit" value="버튼텍스트">
+        (2) <button type="submit">버튼텍스트</button> 
+      2) 초기화
+        (1) <input type="reset" value="버튼텍스트">
+        (2) <button type="reset">버튼텍스트</button> 
+      3) 일반(아무 일도 안함)
+        (1) <input type="button" value="버튼텍스트">
+        (2) <button type="button">버튼텍스트</button>
+    -->
+
+    <form action="/server/anywhere" method="post">      <!-- url에 정보를 알려주고 싶지 않을 때는 post 입력 **로그인(id/pw)가 보이면 안됨. -->
+      <input type="text" name="name" value="홍길동">
+      <select name="gender">
+        <option value="m">남</option>
+        <option>여</option>
+      </select>
+      <button type="submit">전송</button>
+    </form>
+
+    <form action="https://search.naver.com/search.naver" method="get">
+      <div>
+        <input type="text" name="query">
+        <input type="hidden" name="ie" value="utf8">    <!-- 데이터만 보내줄 때 hidden을 사용함. 화면엔 보이지 않음 -->
+        <button type="submit">검색</button>
+      </div>
+    </form>
+
+    <!-- 
+      라벨
+      1. 인라인 요소
+      2. 입력 요소와 연결할 텍스트를 처리하는 태그이다.
+      3. 형식
+      <label for="입력요소아이디"></label>
+      <input id="아이디">
+     -->
+     <input type="radio" name="gender" value="man" id="man">
+     <label for="man">남자</label>
+     <input type="radio" name="gender" value="woman" id="woman">
+     <label for="woman">여자</label>
+
 </body>
 </html>

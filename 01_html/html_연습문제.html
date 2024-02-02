@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .w600 {width: 600px;}
+    table td {border: 1px solid #333; text-align: center; background: #eee; font-weight: 700; padding: 10px;}
+    form div {margin-bottom: 10px;}
+    form span {display: inline-block; width: 70px; vertical-align: top;}
+    form textarea {width: calc(100% - 90px);}
+  </style>
+</head>
+<body>
+  <div class="w600">
+    <div>
+      <h2>연습</h2>
+      <ul>
+        <li>
+          운동
+          <ul>
+            <li>
+              축구
+              <ul>
+                <li>공격수</li>
+                <li>수비수</li>
+                <li>골키퍼</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+    <div>
+      <h1>table</h1>
+      <span>연습1</span>
+      <table style="border: 1px solid black">
+        <tbody>
+          <tr>
+            <td rowspan="5">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td rowspan="3">10</td>
+            <td>11</td>
+            <td>12</td>
+            <td rowspan="2">13</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+          </tr>
+          <tr>
+            <td colspan="5">19</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>홍길동</td>
+            <td>20세</td>
+            <td>서울시 마포구 노고산동</td>
+          </tr>
+          <tr>
+            <th>특기</th>
+            <td colspan="2">먹기</td>
+          </tr>
+          <tr>
+            <th rowspan="2">신체</th>
+            <td>180.0cm</td>
+          </tr>
+          <tr>
+            <td>83kg</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>우리펜션 객실안내</caption>
+        <thead>
+          <tr>
+            <th>방이름</th>
+            <th>고객</th>
+            <th>정원</th>
+            <th>가격</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>클로라도</td>
+            <td>여성전용</td>
+            <td rowspan="3">4인실</td>
+            <td rowspan="4">100,000원</td>
+          </tr>
+          <tr>
+            <td rowspan="2">아레나도</td>
+            <td>가족용</td>
+          </tr>
+          <tr>
+            <td>커플용</td>
+          </tr>
+          <tr>
+            <td>엘레나</td>
+            <td>커플 전용</td>
+            <td>2인실</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">6월 15일까지 전 객실 50% 할인</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <fieldset>
+      <input type="name"><button>로긍ㄴ</button><br/>
+      <input type="password">
+    </fieldset>
+
+    <div>
+      <!-- 파일 첨부가 포함된 form은 method + enctype 필수 작성 -->
+      <p>form</p>
+      <h2>연습4</h2>
+      <div>
+        <form action="server/form" method="post" enctype="multipart/form-data">
+          <div>
+            <span>아이디</span>
+            <input type="text" name="id" placrholder="아이디">
+            <button type="submit">중복확인</button>
+          </div>
+          <div>
+            <span>비밀번호</span>
+            <input type="password" name="pw" placrholder="비밀번호">
+          </div>
+          <div>
+            <span>비밀번호</span>
+            <input type="password" name="pw_2" placrholder="비밀번호 확인">
+          </div>
+          <div>
+            <span>이메일</span>
+            <input type="email" name="email" placrholder="이메일"><small>@</small>
+            <input type="text" name="email" placeholder="직접 입력가능">
+            <select>
+              <option>gmail.com</option>
+              <option>naver.com</option>
+              <option>daum.net</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>성별</legend>
+            <input id="man" type="radio" value="man" name="gender" checked>
+            <label for="man">남자</label>
+            <input id="woman" type="radio" value="woman" name="gender">
+            <label for="woman">여자</label>
+          </fieldset>
+          <fieldset>
+            <legend>관심</legend>
+            <input type="checkbox" name="hobby" id="it" value="1">        <!-- value에 이진법 숫자를 입력 -> +했을 때 같은 값이 절대 나오지 않음. 알고리즘 측면에서 작성한 값 -->
+            <label for="it">IT</label>
+            <input type="checkbox" name="hobby" id="manage" value="2">
+            <label for="manage">경영</label>
+            <input type="checkbox" name="hobby" id="finance" value="4">
+            <label for="finance">금융</label>
+            <input type="checkbox" name="hobby" id="made" value="8">
+            <label for="made">제조</label>
+            <input type="checkbox" name="hobby" id="service" value="16">
+            <label for="service">서비스</label>
+            <input type="checkbox" name="hobby" id="etc" value="32">
+            <label for="etc">기타</label>
+          </fieldset>
+          <div>
+            <span>거주지</span>
+            <select name="address">
+              <option value="seoul">서울</option>
+              <option>대전</option>
+              <option>대구</option>
+              <option>부산</option>
+              <option>인천</option>
+            </select>
+            <input type="text" name="address">
+          </div>
+          <div>
+            <span class="block">자기소개</span>
+            <textarea maxlength="200"></textarea>
+          </div>
+          <div>
+            <span>이력서</span>
+            <input type="file">
+          </div>
+          <div>
+            <span>제출일</span>
+            <input type="date">
+            <button type="submit" id="ok">제출</button>
+            <button type="reset">다시입력</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
