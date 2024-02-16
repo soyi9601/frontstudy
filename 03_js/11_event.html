@@ -73,7 +73,6 @@
   <div id="div1">
     <button type="button">버튼</button>
   </div>
-
   <script>
 
     /*
@@ -128,7 +127,6 @@
   <div id="div2">
     <button type="button">클릭</button>
   </div>
-
   <script>
 
     /*
@@ -167,10 +165,72 @@
 
     function myFunc(btn) {
       console.log(btn);
-      btn.style.display = 'none';
+      console.log(btn.parentNode);
+      console.log(btn.parentElement.innerHTML);
+      btn.parentNode.innerHTML += '<span>dd</span>';
     }
 
   </script>
 
+  <div id="div4">
+    <div><a href="https://www.google.com/">구글</a></div>
+    <div><a href="https://www.naver.com/">네이버</a></div>
+    <div><a href="javascript:myFunc2()">클릭</a></div>
+  </div>
+  <script>
+
+    function myFunc2() {
+      alert('hello world');
+    }
+
+    /*
+      이벤트 방지
+      1. HTML 구성 요소에 따라 기본 이벤트가 등록되어 있다.
+      2. 이벤트 방지를 통해서 기본 이벤트의 동작을 막을 수 있다.
+      3. 이벤트 객체의 preventDefault 메소드를 호출하면 기본 이벤트 동작을 막을 수 있다.
+    */
+
+    document.querySelectorAll('#div4 a').forEach(function(aTag){
+      aTag.onclick = function(evt) {
+        if(evt.target.getAttribute('href').startsWith('javascript')) {    //  evt.target : 클릭한 a태그의
+          evt.preventDefault();
+        }  
+      }
+    })
+  </script>
+
+  <div id="div5">
+    <form action="/server/somewhere.do"
+          method="get">
+      <input type="text" name="query" id="query" />
+      <input type="text" name="q" id="q" />
+      <button type="submit">전송</button>
+    </form>
+  </div>
+  <script>
+
+    /*
+    document.querySelector('#div5 button').onsubmit = function() { 
+      alert('완료');  // sumbit 이벤트 대상은 버튼이 아니라 form이다. button을 주면 작동하지 않음
+    }
+    */
+    document.querySelector('#div5 form').onsubmit = function(evt) { 
+      if(document.getElementById('query').value === '' ) {    // === 두개, 세개 써도 되는데 엄격한 타입 검사를 하고싶으면 === 사용
+        alert('입력1 하시오');
+        document.getElementById('query').focus();
+        evt.preventDefault();       // submit을 막는다. method 이기 때문에 괄호가 있어야함
+        return;       // 입력1을 하고 나서 입력2가 또 동작하기 때문에 입력1이 없으면 함수가 더 돌지 않고 종료할 수 있도록 return을 넣어줘야함
+      }
+      if(document.getElementById('q').value === '' ) { 
+        alert('입력2 하시오');
+        document.getElementById('q').focus();
+        evt.preventDefault();
+        return;
+      }    
+    }
+
+
+  </script>
+  
 </body>
 </html>
