@@ -181,7 +181,7 @@
     function ex05() {
 
       var now = new Date();
-      var dday = new Date(2024, 10, 14);  // 2024-11-14 month는 0-11까지 이므로 10이라고 줘야함
+      var dday = new Date(2024, 2, 21);  // 2024-11-14 month는 0-11까지 이므로 10이라고 줘야함
   
       var remainMillis = dday.getTime() - now.getTime();
       var remainSeconds = parseInt(remainMillis / 1000);
@@ -195,7 +195,7 @@
         if(day >= 1) {
           msg += '&nbsp;' + day + '일';
         } else {
-          var hour = prseInt(remainSeconds / 60 / 60) % 24;
+          var hour = parseInt(remainSeconds / 60 / 60) % 24;
           var minute = parseInt(remainSeconds / 60) % 60;
           var second = remainSeconds % 60;
           msg += '&nbsp;' 

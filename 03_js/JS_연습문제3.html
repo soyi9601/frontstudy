@@ -17,6 +17,17 @@
       light1.png, light2.png 이미지를 교환하고
       btn1의 ON, OFF 텍스트를 교환하시오.
     */
+    document.getElementById('btn1').addEventListener('click', function() {
+      var button = document.getElementById('btn1');
+      var myImg = document.querySelector('#div1 img');
+      if(button.innerHTML === 'ON') {
+        button.innerHTML = 'OFF';
+        myImg.src = '../../assets/image/light2.png';
+      } else {
+        button.innerHTML = 'ON';
+        myImg.src = '../../assets/image/light1.png';
+      }
+    })
 
   </script>
 
@@ -26,7 +37,7 @@
     <div id="img-slide">
       <button id="btn-prev" type="button">이전</button>
       <span id="img-no">1 / 10</span>
-      <button id="btn-prev" type="button">이전</button>
+      <button id="btn-next" type="button">다음</button>
     </div>
     <div id="img-container"></div>
   </div>
@@ -127,6 +138,22 @@
       해제하면 check1.png를 checkbox 대신 나타내시오.
       체크하면 check2.png를 checkbox 대신 나타내시오.
     */
+    #div4 input {
+      display: none;
+    }
+    #div4 input + label:before {
+      content:'';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background: url(../../assets/image/check1.png) center center no-repeat;
+      background-size: cover;
+      margin-right: 5px;
+    }
+    #div4 input:checked + label:before {
+      background: url(../../assets/image/check2.png) center center no-repeat;
+      background-size: cover;
+    }
     
   </style>
   <script>
@@ -163,7 +190,9 @@
     <div id="answer">5</div>
   </div>
   <style>
-    #answer {display: none;}
+    #answer {
+      display: none;
+    }
   </style>
   <script>
     /*
