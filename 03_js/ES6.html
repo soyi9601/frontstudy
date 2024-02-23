@@ -531,8 +531,14 @@
         return Promise.reject(response.statusText);
       }
     }
+    /*
     getAlbum()
       .then(resData=>console.log(resData), msg=>console.log(msg));
+    */
+    getAlbum()
+      .then(resData=>console.log(resData))
+      .carch(msg=>console.log(msg));
+
 
   </script>
 

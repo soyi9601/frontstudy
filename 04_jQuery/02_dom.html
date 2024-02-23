@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="box" class="wrap">box</div>
+  <script>
+
+    // 태그 인식 : 배열
+    var div = $('div');       // document.getElementsByTagName('div')
+    console.log(div);
+
+    // 아이디 인식 : 객체
+    var box = $('#box');      // document.getElementById('box')
+    console.log(box);
+
+    // 클래스 인식 : 배열
+    var wrap = $('.wrap');    // document.getElemetsByClassName('wrap')
+    console.log(wrap);
+
+  </script>
+  
+  <ul class="ott">
+    <li id="netflex"><a href="javascript:void(0)">넷플릭스</a></li>
+    <li id="disney"><a href="javascript:void(0)">디즈니플러스</a></li>
+    <li id="tving"><a href="javascript:void(0)" id="tving-link">티빙</a></li>
+    <li id="wave"><a href="javascript:void(0)">웨이브</a></li>
+    <li id="coupangplay"><a href="javascript:void(0)">쿠팡플레이</a></li>
+  </ul>
+
+  <script>
+
+    // 1. 자식
+    console.log($('.ott > li'));
+    console.log($('.ott').find('li'));
+    console.log($('.ott').children('li'));   // 지정할 수도 있음. 
+    console.log($('.ott').children());
+
+    // 2. 후손
+    console.log($('.ott a'));
+    console.log($('.ott').find('a'));
+    console.log($('.ott').children('a'));    // 길이가 0으로 나옴. children은 후손은 사용할 수 없음
+    console.log($('.ott').children('li').children('a'));
+    console.log($('.ott').children().children());
+
+    // 3. 모든 형제
+    console.log($('#tving ~ li'));            // 일반 형제 (#tving의 다음 형제들)
+    console.log($('#tving').nextAll('li'));   // 다음 형제 (#tving의 다음 형제들) (li 안써도 나옴)
+    console.log($('#tving').prevAll('li'));   // 이전 형제 (#tving의 이전 형제들)
+    console.log($('#tving').siblings('li'));  // 모든 형제 (#tving의 모든 형제들)
+    
+    // 4. 인접 형제
+    console.log($('#tving + li'));          // 인접 형제 (#tving의 다음 형제)
+    console.log($('#tving').next('li'));    // 다음 형제 (#tving의 다음 형제)
+    console.log($('#tvnig').prev('li'));    // 이전 형제 (#tving의 이전 형제)
+
+    // 5. 부모와 조상
+    console.log($('#tving-link').parent('li'));   // 부모
+    console.log($('#tving-link').closest('li'));  // 가장 가까운 부모
+    console.log($('#tving-link').parents());      // 부모 & 조상
+
+  </script>
+
+  <form id="frm">
+    <div><input type="text"></div>
+    <div><input type="password"></div>
+    <div><input type="radio" name="a" checked><input type="radio" name="a"></div>
+    <div><input type="checkbox"><input type="checkbox"></div>
+    <div><select><option selected>A</option><option>B</option></select></div>
+  </form>
+  <script>
+
+    // type 속성
+    console.log($(':text'));
+    console.log($(':password'));
+    console.log($(':radio'));
+    console.log($(':checkbox'));
+
+    // 상태 지정
+    console.log($(':focus'));             // 포커스를 가진 요소
+    console.log($(':focus'));             // 포커스를 가진 요소
+    console.log($(':checked'));           // 체크된 요소
+    console.log($(':radio:checked'));     // radio 중 체크된 요소
+    console.log($(':checkbox:checked'));  // checkbox 중 체크된 요소
+    console.log($(':selected'));          // 선택된 요소
+
+    // 상태 확인
+    console.log($(':text').is(':focus'));     // text가 포커스를 가지면 true 반환
+    console.log($(':radio').is(':checked'));  // radio가 체크되면 true 반환
+    console.log($('option').is(':selected'));  // option이 선택되면 true 반환
+  </script>
+
+  <hr>
+
+  <div id="div1">hello world</div>
+  <script>
+    // 내부 텍스트 : text()   / javascript : textContent
+    console.log($('#div1').text());
+    $('#div1').text('안녕하세요 반갑습니다');
+    // document.getElementById('div1').textContent = '안녕하다';  호환성 측면에서 jQuery말고 javascript을 사용하는걸 권장.
+  </script>
+
+  <div id="div2"><h1>hello world</h1></div>
+  <script>
+    // 내부 요소 : html()     / javascript : innerHTML
+    console.log($('#div2').html());
+    $('#div2').html('<em>안녕하세요 반갑습니다.</em>');
+  </script>
+
+  <div id="div3"><img src="../../assets/image/animal10.jpg" width="192px"></div>
+  <script>
+    // 태그 속성(attribute)
+    console.log($('#div3').find('img').attr('src'));
+    $('#div3').find('img').attr('src', '../../assets/image/flower1.jpg');
+    $('#div3').find('img').removeAttr('src');
+  </script>
+
+  <div id="div4">
+    <input type="radio" id="man" class="blind" value="M" checked="checkbox">
+  </div>
+  <script>
+    // 문서 객체 속성(property)
+    var radio = $('#div4').find(':radio');
+    console.log(radio.prop('type'));
+    console.log(radio.prop('id')); 
+    console.log(radio.prop('className'), radio.prop('class'));    // , 뒤는 jQuery가 해주는 명칭들!
+    console.log(radio.prop('value'),     radio.val());
+    console.log(radio.prop('checked'),   radio.is(':checked'));
+
+    radio.prop('type', 'checkbox');
+    radio.removeProp('type');    // builtin property는 삭제 금지한다.
+  </script>
+
+</body>
+</html>
