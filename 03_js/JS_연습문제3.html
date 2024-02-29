@@ -189,8 +189,8 @@
     #div4 input + label:before {
       content:'';
       display: inline-block;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       background: url(../../assets/image/check1.png) center center no-repeat;
       background-size: cover;
       margin-right: 5px;
@@ -246,20 +246,20 @@
       Hint) data-state="close-answer"는 정답 숨김 상태를 의미하고,
             data-state="open-answer"는 정답 보임 상태를 의미한다.
     */
-    var answer = document.getElementById('answer');    
-    document.getElementById('btn5').addEventListener('click', function() {
-      // if(evt.target.dataset.state = 'close-answer') {
-      //   answer.removeAttribute('id');
-      //   evt.target.dataset.state = 'open-answer';
-      //   console.log(evt.target.dataset.state);
-      // } else if (evt.target.dataset.state = 'open-answer') {
-      //   answer.setAttribute('id', 'answer');
-      //   evt.target.dataset.state = 'close-answer';
-      //   console.log(evt.target.dataset.state);
-      // }
-      console.log(answer.hasClass('answer'));
-      answer.toggleClass('answer');
-    })
+       
+    document.getElementById('btn5').onclick = function(evt) {
+      if(evt.target.dataset.state = 'close-answer') {
+        document.getElementById('answer').style.display = 'block';
+        evt.target.textContent = '정답숨기기';
+        evt.target.dataset.state = 'open-answer';
+      } else {
+        document.getElementById('answer').style.display = 'none';
+        evt.target.textContent = '정답보기';
+        evt.target.dataset.state = 'close-answer';
+      }
+      // console.log(answer.hasClass('answer'));
+      // answer.toggleClass('answer');
+    }
   </script>
 
 </body>
